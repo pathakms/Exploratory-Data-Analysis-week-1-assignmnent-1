@@ -1,5 +1,9 @@
-data<-read.table("household_power_consumption.txt",header=TRUE,sep=";",stringsAsFactors=FALSE,dec=".")
-data1<-data[data$Date%in%c("01/02/2007","02/02/2007"),]
-png("Plot1.png",width=480,height=480)
-hist(as.numeric(data1),col="red",xlab="Global Active Power(kilowatts),ylab="frequency",main="Global Active Power")
-dev.off()
+dataFile <- "./data/household_power_consumption.txt"
+ +data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+ +subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
+ +
+ +#str(subSetData)
+ +globalActivePower <- as.numeric(subSetData$Global_active_power)
+ +png("plot1.png", width=480, height=480)
+ +hist(globalActivePower, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+ +dev.off()
